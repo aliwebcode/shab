@@ -23,6 +23,7 @@
                                 <br/>
                             </div>
                             <div class="tab-content p-0 col-lg-12" v-if="loaded">
+
                                 <div class="tab-pane fade active show" id="tab2">
                                     <div class="messaging">
                                         <div class="inbox_msg">
@@ -78,6 +79,17 @@
 
 .mesgs {
     text-align: right;
+}
+@media (max-width: 576px) {
+    .inbox_msg .inbox_people {
+        display: none;
+    }
+    .mesgs {
+        width: 100% !important;
+    }
+    .show-contacts-btn {
+        display: block !important;
+    }
 }
 </style>
 

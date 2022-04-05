@@ -15,8 +15,8 @@
                                 <p>
                                     {{ message.message }}
                                 </p>
-                                <span class="time_date">
-                                    {{ getDate(message.created_at) }}
+                                <span class="time_date" dir="ltr">
+                                    {{ message.time }}
                                 </span>
                             </div>
                         </div>
@@ -28,9 +28,9 @@
                             <p>
                                 {{ message.message }}
                             </p>
-                            <span class="time_date">
+                            <span class="time_date" dir="ltr">
                                 <i class="fa fa-check" style="color: #555;" v-if="message.seen"></i>
-                                {{ getDate(message.created_at) }}
+                                {{ message.time }}
                             </span>
                         </div>
                     </div>
@@ -51,10 +51,10 @@
             </div>
         </div>
     </div>
-    <div v-else class="row">
-        <div class="col-12 text-center">
-            <img src="/assets/img/people.png" style="width: 300px;">
-            <h3 style="color: #444" class="mt-3">ابدأ محادثاتك الان</h3>
+    <div v-else class="row" style="height: 500px">
+        <div class="col-12 text-center" style="margin: auto">
+            <img src="/assets/img/people.svg" style="width: 400px;">
+            <h4 style="color: #444" class="mt-5">ابدأ محادثاتك الان</h4>
         </div>
     </div>
 </template>
@@ -91,8 +91,8 @@ export default {
     },
     methods: {
         getDate: function (d) {
-            var date = new Date(d)
-            var res = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes()
+            let date = new Date(d)
+            let res = date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear() + " " + date.getHours() + ":" + date.getMinutes()
             return res
         },
         sendMessage: function (myId,userId) {

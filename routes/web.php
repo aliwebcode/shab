@@ -27,6 +27,11 @@ Route::get('/logout', function () {
     return redirect("/login");
 });
 
+/* Global Pages */
+Route::get('/privacy-policy', function () {
+    return view('pages.privacy_policy');
+});
+
 //Route::get('/test/{l}','HomeController@test');
 
 Route::get('/{any}/{id?}', 'HomeController@index')

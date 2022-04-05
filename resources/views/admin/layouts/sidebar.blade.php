@@ -9,6 +9,13 @@
                 </a>
             </li>
 
+            <li class="nav-item @yield('activations')">
+                <a href="{{ route('admin.activations.index') }}">
+                    <i class="la la-certificate"></i>
+                    <span class="menu-title" data-i18n="nav.dash.main"> طلبات التوثيق</span>
+                </a>
+            </li>
+
             <li class="nav-item @yield('mail')">
                 <a href="{{ route('admin.mail.index') }}">
                     <i class="la la-envelope"></i>

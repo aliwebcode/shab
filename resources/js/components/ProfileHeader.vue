@@ -16,6 +16,10 @@
                         <p class="mb-3">
                             {{ calcAge(user.birthday) }} سنة
                         </p>
+                        <h6>الرمز التعريفي</h6>
+                        <p class="mb-3">
+                            {{ user.user_code }}
+                        </p>
                     </div>
                 </div>
                 <div class="col-12 col-md-6 text-center">
@@ -85,7 +89,8 @@
                         <li :class="{active:activeTab == 'chat'}">
                             <router-link to="/chat" :class="{notify:un_read>0}">
                                 <i class="fa fa-paper-plane"></i>
-                                المحادثات ({{ un_read }})
+                                <span v-if="un_read">المحادثات ({{ un_read }})</span>
+                                <span v-else>المحادثات</span>
                             </router-link>
                         </li>
                         <li :class="{active:activeTab=='block-area'}">
@@ -115,7 +120,7 @@
                         <li :class="{active:activeTab=='active-requests'}">
                             <router-link to="/active-requests">
                                 <i class="fa fa-list-alt"></i>
-                                {{ (user.gender == 'female') ? 'طلبات نظرة شرعية (0)' : 'طلباتي (0)' }}
+                                {{ (user.gender == 'female') ? 'طلبات نظرة شرعية' : 'طلباتي' }}
                             </router-link>
                         </li>
                     </ul>
@@ -204,6 +209,7 @@
         </Modal>
     </div>
 </template>
+
 <style>
 .user-nav li a.notify {
     font-weight: bold;
@@ -313,6 +319,12 @@
     align-items: center;
 }
 
+@media (max-width: 768px) {
+    .profile {
+        margin-top: 40px;
+    }
+}
+
 
 </style>
 
@@ -389,7 +401,11 @@ export default {
             empty: 0,
             un_read: 0,
             userCode: "",
-            emptyCode: 0
+            emptyCode: 0,
+            counts: {
+                mails: null,
+                requests: null
+            }
         }
     },
     methods: {
@@ -408,7 +424,7 @@ export default {
                 id: e
             })
                 .then((res) => {
-                    if (res.data == 1) {
+                    if (res.status == 200) {
                         // Show Success Message
                         const Toast = Swal.mixin({
                             toast: true,
@@ -421,10 +437,17 @@ export default {
                                 toast.addEventListener('mouseleave', Swal.resumeTimer)
                             }
                         })
-                        Toast.fire({
-                            icon: 'success',
-                            title: 'تم التعديل بنجاح'
-                        })
+                        if(res.data == 1) {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'تم التعديل بنجاح سوف يظهر ملفك الشخصي للعامة'
+                            })
+                        } else {
+                            Toast.fire({
+                                icon: 'success',
+                                title: 'تم التعديل بنجاح لن يظهر ملفك الشخصي للعامة'
+                            })
+                        }
                     }
                 })
                 .catch((err) => {

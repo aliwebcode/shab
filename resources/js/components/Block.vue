@@ -16,9 +16,12 @@
                                     :activated="activated"
                                     :complete="complete"></account-status>
                                 <search-box></search-box>
+                                <div class="loading-area" v-if="!loaded">
+                                    <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                                </div>
                                 <br/>
                             </div>
-                            <div class="tab-content p-0 col-lg-12">
+                            <div class="tab-content p-0 col-lg-12" v-if="loaded">
                                 <div class="tab-pane table-responsive fade active show" id="tab2">
                                     <table class="table table-bordered" style="text-align:center">
                                         <thead>
@@ -29,13 +32,16 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <tr v-if="blocks.length == 0">
+                                            <td colspan="3" class="text-center">قائمة التجاهل فارغة.</td>
+                                        </tr>
                                         <tr v-for="(block,index) in blocks">
-                                            <th>
-                                                <router-link :to="'/user/'+users[index].id">{{
+                                            <td>
+                                                <a :href="'/user/'+users[index].id">{{
                                                         users[index].name
                                                     }}
-                                                </router-link>
-                                            </th>
+                                                </a>
+                                            </td>
                                             <td>{{ getDate(block.created_at) }}</td>
                                             <td>
                                                 <input type="button" @click="cancelBlock(block.id)" value="إلغاء الحظر"
@@ -73,6 +79,7 @@ export default {
         return {
             blocks: [],
             users: [],
+            loaded: false
         }
     },
     mounted() {
@@ -85,6 +92,7 @@ export default {
                     this.blocks.push(res.data[i].block)
                     this.users.push(res.data[i].user)
                 }
+                this.loaded = true
             })
     },
     methods: {

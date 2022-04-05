@@ -27,6 +27,9 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <ul class="notifications">
+                                                        <li v-if="notifications.length == 0" class="justify-content-center text-center">
+                                                            <p>لايوجد إشعارات.</p>
+                                                        </li>
                                                         <li v-for="(notification,index) in notifications"
                                                             :class="{active:notification.seen == 0}">
                                                             <img :src="'/storage/images/sent/'+notification.image">

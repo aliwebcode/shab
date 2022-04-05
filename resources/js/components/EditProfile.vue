@@ -5,7 +5,10 @@
                 <div class="col-md-12">
                     <div id="content" class="content content-full-width">
                         <!-- begin profile -->
-                        <profile-header :user="user" :auth_user_id="auth_user_id"></profile-header>
+                        <profile-header :user="user"
+                                        :auth_user_id="auth_user_id"
+                                        :activated="activated"
+                                        :complete="complete"></profile-header>
                         <!-- end profile -->
                         <!-- begin profile-content -->
                         <div class="profile-content row">
@@ -195,7 +198,7 @@ import ProfileHeader from "../components/ProfileHeader"
 import SearchBox from "../components/SearchBox"
 
 export default {
-    props: ['user', 'auth_user_id', 'complete'],
+    props: ['user', 'auth_user_id', 'complete', 'activated'],
     mounted() {
         // get auth user id
         var userId = document.querySelector("meta[name='user-id']").getAttribute('content')

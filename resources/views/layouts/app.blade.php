@@ -26,7 +26,33 @@
     <link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal&amp;display=swap" rel="stylesheet">
-    @yield('style')
+    <style>
+        footer ul {
+            text-align: center;
+            font-size: 0;
+        }
+        footer ul li {
+            display: inline-block;
+            font-size: 13px;
+        }
+        footer ul li::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f111";
+            color: #d88de3;
+            margin: 0 10px;
+            font-size: 8px;
+            font-weight: bold;
+        }
+        footer ul li:last-child:after {
+            content: '';
+        }
+        footer ul li a {
+            color: #E6E6E6;
+        }
+        footer ul li a:hover {
+            color: #d88de3 !important;
+        }
+    </style>
 </head>
 
 <body>
@@ -147,41 +173,31 @@
                 <div class="container">
                     <div class="footer-sidebar">
                         <div class="row">
-                            <div class="col-lg-10" style="text-align: center;">
+                            <div class="col-12" style="text-align: center;">
                                 <div class="sidebar-widget text-widget">
-                                    <h6 class="sidebar-title">
-                                        <img src="assets/img/logo/cv.png" style="max-width: 200px;">
-                                        <br>
+                                    <img src="{{ asset('assets/img/logo/logo2.png') }}"
+                                         style="max-width: 400px;">
+                                    <h6 class="sidebar-title" style="font-size: 14px;">
                                         للزواج الشرعي الإسلامي وليس للتعارف و عقد الصداقات
-
                                     </h6>
                                 </div>
                             </div>
-                            <div class="col-lg-2" style="text-align: center;">
-                                <a href="Roles.html">شروط و أحكام الموقع</a>
-                                <br>
-                                <a href="Roles.html">حقوق الملكية الفكرية </a>
-                                <br>
-
-                                <a href="Roles.html">سياسة الخصوصية </a>
-                                <br>
-
-                                <a href="Roles.html">سياسة الدفع وإسترجاع المبالغ </a>
-                                <br>
-
-                                <a href="Roles.html">مقترحات وشكاوي </a>
+                            <div class="col-12 text-center">
+                                <ul>
+                                    <li><a href="/">عن الموقع</a></li>
+                                    <li><a href="/">تواصل معنا</a></li>
+                                    <li><a href="/">سياسة الخصوصية</a></li>
+                                    <li><a href="/">الشروط والأحكام</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="copyright-wrapper">
                         <p class="copyright" style="text-align: center;">
-                            <i class="fa fa-copyright"></i>
-
-                            All Rights Reserved For BRLNT.Bisness 2020
-
-
+                            جميع الحقوق محفوظة لشركة BRLNT
+                            &copy;
+                            {{ Date("Y") }}
                         </p>
-
                     </div>
                 </div>
             </div>

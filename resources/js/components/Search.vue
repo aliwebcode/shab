@@ -144,14 +144,52 @@
                                                         <option value="لا يوجد"> لا يوجد</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-lg-2" v-if="user.gender=='male'">
-                                                    <select class="form-control">
+                                                <div class="col-lg-2">
+                                                    <select class="form-control" v-model="search.future_living">
                                                         <option selected value="">مكان السكن بعد الزواج</option>
                                                         <option value="مستقل"> مستقل</option>
                                                         <option value="في ملحق"> في ملحق</option>
                                                         <option value="منزل خاص"> منزل خاص</option>
                                                         <option value="مع العائلة"> مع العائلة</option>
                                                         <option value="لا أمانع"> لا أمانع</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <select class="form-control" v-model="search.smoking">
+                                                        <option selected value="">التدخين</option>
+                                                        <option value="نعم">نعم</option>
+                                                        <option value="لا">لا</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <select class="form-control" v-model="search.body">
+                                                        <option selected value="">البنية الجسمية</option>
+                                                        <option value="ضعيف"> ضعيف</option>
+                                                        <option value="رشيق"> رشيق</option>
+                                                        <option value="رياضي"> رياضي</option>
+                                                        <option value="وزن زائد"> وزن زائد</option>
+                                                        <option value="ضخم"> ضخم</option>
+                                                        <option value="سمين"> سمين</option>
+                                                        <option value="جسم غير متناسق مع الطول"> جسم غير متناسق مع الطول</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <select class="form-control" v-model="search.marriage_method">
+                                                        <option selected value="">طريقة الزواج</option>
+                                                        <option value="عن طريق النظرة الشرعية فقط"> عن طريق النظرة الشرعية فقط</option>
+                                                        <option value="عن طريق التعارف المسبق أولاً"> عن طريق التعارف المسبق أولا
+                                                        </option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-2">
+                                                    <select class="form-control" v-model="search.employee">
+                                                        <option selected value="">الوظيفة</option>
+                                                        <option value="government">قطاع حكومي</option>
+                                                        <option value="private">قطاع خاص</option>
+                                                        <option value="looking_for_job">باحث عن وظيفة</option>
+                                                        <option value="retired">متقاعد</option>
+                                                        <option value="no_work">لا يعمل</option>
+                                                        <option value="house">ربة منزل</option>
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3">
@@ -213,6 +251,13 @@
                                             <div class="card">
                                                 <div class="card-header text-center">
                                                     نتائج البحث
+                                                    <span v-if="results.length">
+                                                        :
+                                                        <strong>
+                                                            {{ results.length }}
+                                                        نتيجة
+                                                        </strong>
+                                                    </span>
                                                 </div>
                                                 <div class="card-body">
                                                     <div class="row w-100">
@@ -348,12 +393,17 @@ export default {
                 study: "",
                 skin: "",
                 financial: "",
+                future_living: "",
                 age_from: "",
                 age_to: "",
                 weight_from: "",
                 weight_to: "",
                 length_from: "",
                 length_to: "",
+                employee: "",
+                smoking: "",
+                body: "",
+                marriage_method: "",
             },
             loading: false,
             results: [],
@@ -384,7 +434,7 @@ export default {
                 .then((res) => {
                     this.loading = false
                     this.results = res.data
-                    // console.log(res.data)
+                    console.log(res.data)
                 })
                 .catch((err) => {
                     console.log(err)
@@ -399,12 +449,17 @@ export default {
             this.search.study = ""
             this.search.skin = ""
             this.search.financial = ""
+            this.search.future_living = ""
             this.search.age_from = ""
             this.search.age_to = ""
             this.search.weight_from = ""
             this.search.weight_to = ""
             this.search.length_from = ""
             this.search.length_to = ""
+            this.search.employee = ""
+            this.search.smoking = ""
+            this.search.body = ""
+            this.search.marriage_method = ""
         },
         sendMessageTo: function (to_id) {
             axios.post('/api/save-message', {

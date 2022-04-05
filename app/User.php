@@ -43,6 +43,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Profile::class);
     }
 
+    public function activation() {
+        return $this->hasMany(Activation::class);
+    }
+
     public function receivesBroadcastNotificationsOn()
     {
         return 'App.User.'.$this->id;

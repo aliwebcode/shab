@@ -97,8 +97,10 @@ Route::post('/select-date','Api\ProfileController@select_date');
 
 // Get Blocked Users
 Route::get('/get-blocked/{id}','Api\ProfileController@get_blocked');
+// Block User
+Route::post('/block-user','Api\ProfileController@block_user');
 // Cancel Block
-Route::post('cancel-block','Api\ProfileController@cancel_block');
+Route::post('/cancel-block','Api\ProfileController@cancel_block');
 /*
 =======================
     Messages

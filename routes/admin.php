@@ -28,6 +28,15 @@ Route::group(['namespace' => 'Admin','middleware' => 'auth:admin'],function (){
     // Delete Action
     Route::post('/mail/delete','MailController@delete')->name('admin.mail.delete');
 
+
+    /* Activations Area */
+
+    // Activations Page
+    Route::get('/activations', 'ActivationsController@index')->name('admin.activations.index');
+    // Activation Details
+    Route::get('/activation/{id}', 'ActivationsController@show')->name('admin.activations.show');
+    Route::post('/activation/change-status', 'ActivationsController@change_status')->name('admin.activations.change_status');
+
     /* Admin Area */
 
     // Profile Page

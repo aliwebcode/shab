@@ -3,9 +3,7 @@
         <div v-if="!user.is_verify && auth_user_id == user.id" class="alert alert-danger" role="alert"
              style="text-align:right">
             <i class="fa fa-times-circle"></i>يرجى تأكيد بريدك الالكتروني
-            <form class="d-inline" method="POST"
-                  action="">
-
+            <form class="d-inline" method="POST" action="">
                 <button type="submit" class="btn btn-link p-0 m-0 align-baseline">
                     إرسال الرمز مجدداً
                 </button>

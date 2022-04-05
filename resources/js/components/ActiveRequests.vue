@@ -15,11 +15,13 @@
                                     :auth_user_id="auth_user_id"
                                     :activated="activated"
                                     :complete="complete"></account-status>
-
                                 <search-box></search-box>
+                                <div class="loading-area" v-if="!loaded">
+                                    <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                                </div>
                                 <br/>
                             </div>
-                            <div class="tab-content p-0 col-lg-12">
+                            <div class="tab-content p-0 col-lg-12" v-if="loaded">
                                 <div class="tab-pane table-responsive fade active show" id="tab2">
                                     <table v-if="user.gender=='female'" class="table table-bordered"
                                            style="text-align:center">
@@ -32,13 +34,16 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <tr v-if="requests.length == 0">
+                                            <td colspan="4" class="text-center">لا يوجد طلبات.</td>
+                                        </tr>
                                         <tr v-for="(request,index) in requests">
-                                            <th>
-                                                <router-link :to="'/user/'+users[index].id">{{ users[index].user_code }}
-                                                </router-link>
-                                                {{ request.status }}
-                                            </th>
-                                            <td v-if="requestDate[index] != 0">
+                                            <td>
+                                                <a :href="'/user/'+users[index].id">
+                                                    {{ users[index].name }} ({{ users[index].user_code }})
+                                                </a>
+                                            </td>
+                                            <td v-if="request.status == 1 && requestDate[index] != 0">
                                                 {{ requestDate[index] }}
                                                 <br>
                                                 <bdi>
@@ -53,8 +58,11 @@
                                                     </span>
                                                 </bdi>
                                             </td>
+                                            <td v-else-if="request.status == 'C'">
+                                                <button class="btn btn-danger btn-sm" type="button">ملغية</button>
+                                            </td>
                                             <td v-else>في انتظار الطرف الاخر</td>
-                                            <td v-if="requestDate[index] != 0">
+                                            <td v-if="requestDate[index] != 0 && request.status == 1">
                                                 <input type="button"
                                                        value="تمديد الوقت"
                                                        class="btn btn-info btn-sm"
@@ -81,7 +89,7 @@
                                                 />
                                             </td>
                                             <td v-else>-</td>
-                                            <td v-if="requestDate[index] != 0">
+                                            <td v-if="requestDate[index] != 0 && request.status == 1">
                                                 {{
                                                     getDate(requestDate[index], requestHour[index], requestMinute[index])
                                                 }}
@@ -101,11 +109,14 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <tr v-if="requests.length == 0">
+                                            <td colspan="4" class="text-center">لا يوجد طلبات.</td>
+                                        </tr>
                                         <tr v-for="(request,index) in requests">
                                             <td>
-                                                <router-link :to="'/user/'+users[index].id">
+                                                <a :href="'/user/'+users[index].id">
                                                     {{ users[index].name }} ({{ users[index].user_code }})
-                                                </router-link>
+                                                </a>
                                             </td>
                                             <td v-if="request.status == 0">بانتظار الموافقة وتحديد موعد</td>
                                             <td v-else-if="request.status == 1 && requestDate[index] != 0">
@@ -129,8 +140,15 @@
                                                 </button>
                                             </td>
                                             <td v-else-if="request.status == 'C'">
-                                                <button class="btn btn-danger btn-sm" type="button">ملغية</button>
+                                                <strong class="text-danger">ملغية</strong>
                                             </td>
+                                            <td v-else-if="request.status == 'R'">
+                                                <strong class="text-danger">مرفوضة</strong>
+                                                <br>
+                                                <p class="text-center">سبب الرفض:</p>
+                                                <p class="text-right">{{ request.reject_reason }}</p>
+                                            </td>
+                                            <td v-else>في انتظار تحديد موعد</td>
                                             <td v-if="requestDate[index] != 0 && request.status == 1">
                                                 <input type="button"
                                                        value="تمديد الوقت"
@@ -226,6 +244,9 @@
                                 </bdi>
                             </div>
                         </div>
+                        <div class="col-12 text-center" v-if="datesError">
+                            <div class="alert alert-danger">يرجى اختيار إما موعد أو شهر مناسب لك</div>
+                        </div>
                         <div class="col-12 text-center">
                             <button @click="sendDate" class="btn btn-primary">إرسال</button>
                         </div>
@@ -261,7 +282,9 @@ export default {
             },
             showSelectDateModal: false,
             dates: [],
-            selected: null
+            selected: null,
+            datesError: false,
+            loaded: false
         }
     },
     mounted() {
@@ -282,6 +305,7 @@ export default {
                                 this.requestHour.push(r.data[i].requestHour)
                                 this.requestMinute.push(r.data[i].requestMinute)
                             }
+                            this.loaded = true
                             // console.log(this.reqDate)
                         })
                 } else if (response.data == 'female') {
@@ -296,6 +320,7 @@ export default {
                                 this.requestHour.push(res.data[i].requestHour)
                                 this.requestMinute.push(res.data[i].requestMinute)
                             }
+                            this.loaded = true
                             // console.log(this.reqDate)
                         })
                 }
@@ -433,6 +458,7 @@ export default {
         },
         getDates: function (id) {
             this.showSelectDateModal = true
+            this.request_id = id
             axios.get("/api/get-dates/" + id)
                 .then((res) => {
                     this.dates = res.data
@@ -442,9 +468,12 @@ export default {
             this.selected = d
         },
         sendDate: function () {
-            this.showSelectDateModal = false
+            let type = this.selected != null ? "id" : "month"
             axios.post("/api/select-date", {
-                id: this.selected
+                id: this.selected,
+                type: type,
+                month: this.selectedMonth,
+                request_id : this.request_id
             })
                 .then((res) => {
                     if(res.data == 1) {
@@ -458,6 +487,10 @@ export default {
                         },1000);
                     }
                 })
+            this.showSelectDateModal = false
+            this.selected = null
+            this.selectedMonth = ""
+            this.request_id = ""
         }
     },
 }

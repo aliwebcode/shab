@@ -20,7 +20,7 @@
     <!-- iOS Safari -->
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="apple-mobile-web-app-status-bar-style" content="black-transcluent"/>
-    <title> موقع زوجني للزواج الاسلامي </title>
+    <title> موقع شبكة للزواج الاسلامي </title>
     <!-- IE-Support -->
     <script src="{{ asset('assets/js/ie-support.min.js') }}" defer></script>
     <!-- css-files -->
@@ -37,6 +37,35 @@
         .navigation-type-2 .inner-wrapper .navigation-wrapper .right-side .social-list li a i {
             font-size: 16px;
             color: var(--black-color) !important;
+        }
+        footer ul {
+            text-align: center;
+            font-size: 0;
+        }
+        footer ul li {
+            display: inline-block;
+            font-size: 13px;
+        }
+        footer ul li::after {
+            font-family: "Font Awesome 5 Free";
+            content: "\f111";
+            color: #d88de3;
+            margin: 0 10px;
+            font-size: 8px;
+            font-weight: bold;
+        }
+        footer ul li:last-child:after {
+            content: '';
+        }
+        footer ul li a {
+            color: #E6E6E6;
+        }
+        footer ul li a:hover {
+            color: #d88de3 !important;
+        }
+        .pagination {
+            margin-top: 20px;
+            direction: ltr;
         }
     </style>
 </head>
@@ -70,7 +99,7 @@
             <div class="navigation-wrapper">
                 <div class="logotype-wrapper">
                     <a href="#">
-                        <img src="{{ asset('assets/img/logo/cv.png') }}"
+                        <img src="{{ asset('assets/img/logo/cv1.png') }}"
                              alt="Logo">
                     </a>
                 </div>
@@ -84,20 +113,20 @@
                             <li class="menu-item"><a href="/logout">تسجيل الخروج</a></li>
                         </ul>
                     </div>
-                    <ul class="social-list">
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-bell"
-                                   style="color: #3B5999;"></i>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                <i class="fa fa-envelope"
-                                   style="color: #3B5999;"></i>
-                            </a>
-                        </li>
-                    </ul>
+{{--                    <ul class="social-list">--}}
+{{--                        <li>--}}
+{{--                            <a href="#">--}}
+{{--                                <i class="fa fa-bell"--}}
+{{--                                   style="color: #3B5999;"></i>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                        <li>--}}
+{{--                            <a href="#">--}}
+{{--                                <i class="fa fa-envelope"--}}
+{{--                                   style="color: #3B5999;"></i>--}}
+{{--                            </a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
                 </div>
             </div>
         </div>
@@ -107,7 +136,7 @@
             <!-- Logotype -->
             <div class="logotype-wrapper">
                 <a href="/">
-                    <img src="{{ asset('assets/img/logo/cv.png') }}"
+                    <img src="{{ asset('assets/img/logo/cv1.png') }}"
                          alt="Logo">
                 </a>
             </div>
@@ -147,41 +176,31 @@
                 <div class="container">
                     <div class="footer-sidebar">
                         <div class="row">
-                            <div class="col-lg-10" style="text-align: center;">
+                            <div class="col-12" style="text-align: center;">
                                 <div class="sidebar-widget text-widget">
-                                    <h6 class="sidebar-title">
-                                        <img src="assets/img/logo/cv.png" style="max-width: 200px;">
-                                        <br>
+                                    <img src="{{ asset('assets/img/logo/logo2.png') }}"
+                                         style="max-width: 400px;">
+                                    <h6 class="sidebar-title" style="font-size: 14px;">
                                         للزواج الشرعي الإسلامي وليس للتعارف و عقد الصداقات
-
                                     </h6>
                                 </div>
                             </div>
-                            <div class="col-lg-2" style="text-align: center;">
-                                <a href="Roles.html">شروط و أحكام الموقع</a>
-                                <br>
-                                <a href="Roles.html">حقوق الملكية الفكرية </a>
-                                <br>
-
-                                <a href="Roles.html">سياسة الخصوصية </a>
-                                <br>
-
-                                <a href="Roles.html">سياسة الدفع وإسترجاع المبالغ </a>
-                                <br>
-
-                                <a href="Roles.html">مقترحات وشكاوي </a>
+                            <div class="col-12 text-center">
+                                <ul>
+                                    <li><a href="/">عن الموقع</a></li>
+                                    <li><a href="/">تواصل معنا</a></li>
+                                    <li><a href="/">سياسة الخصوصية</a></li>
+                                    <li><a href="/">الشروط والأحكام</a></li>
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="copyright-wrapper">
                         <p class="copyright" style="text-align: center;">
-                            <i class="fa fa-copyright"></i>
-
-                            All Rights Reserved For BRLNT.Bisness 2020
-
-
+                            جميع الحقوق محفوظة لشركة BRLNT
+                            &copy;
+                            {{ Date("Y") }}
                         </p>
-
                     </div>
                 </div>
             </div>

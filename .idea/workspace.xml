@@ -1,7 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="38995ce0-df3d-441e-96bd-7e08f7c25deb" name="Default Changelist" comment="" />
+    <list default="true" id="38995ce0-df3d-441e-96bd-7e08f7c25deb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Activation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Activation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Block.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Block.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/ProfileController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/ProfileController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Api/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Api/SearchController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Message.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Message.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/assets/img/people.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ActiveRequests.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ActiveRequests.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Block.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Block.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Chat.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Chat.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ChatContacts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ChatContacts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ChatConversation.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ChatConversation.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/EditProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/EditProfile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Interests.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Interests.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Mail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Mail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/MyProfile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/MyProfile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Notifications.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Notifications.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/PendingRequests.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/PendingRequests.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Profile.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Profile.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/ProfileHeader.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/ProfileHeader.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/Search.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/Search.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/partials/accountStatus.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/partials/accountStatus.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/sidebar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/admin.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/admin.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -151,7 +185,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../jobs" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -282,7 +316,22 @@
       <workItem from="1639776207194" duration="1570000" />
       <workItem from="1639827498351" duration="868000" />
       <workItem from="1639845515860" duration="51000" />
-      <workItem from="1639950085495" duration="1969000" />
+      <workItem from="1639950085495" duration="3724000" />
+      <workItem from="1640033202589" duration="26000" />
+      <workItem from="1640610362782" duration="13184000" />
+      <workItem from="1641219473601" duration="8296000" />
+      <workItem from="1641560662577" duration="15845000" />
+      <workItem from="1641645120446" duration="12887000" />
+      <workItem from="1641674091861" duration="1009000" />
+      <workItem from="1641821636480" duration="128000" />
+      <workItem from="1643128683036" duration="5490000" />
+      <workItem from="1643210986363" duration="2627000" />
+      <workItem from="1643288588424" duration="7242000" />
+      <workItem from="1643301412004" duration="5306000" />
+      <workItem from="1643383966525" duration="5095000" />
+      <workItem from="1643465589568" duration="25000" />
+      <workItem from="1643551371015" duration="605000" />
+      <workItem from="1643635190626" duration="283000" />
     </task>
     <servers />
   </component>
@@ -294,25 +343,21 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="488" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1366.728@0.0.1366.728" timestamp="1636197668773" />
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1631992303489">
+    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1643635475830">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="413" y="118" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728@0.0.1366.728" timestamp="1631992303489" />
-    <state x="463" y="118" key="FileChooserDialogImpl" timestamp="1639845569460">
+    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1643635475830" />
+    <state x="518" y="287" key="NewPhpFileDialog" timestamp="1643289718234">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="463" y="118" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1639845569460" />
-    <state x="518" y="287" key="NewPhpFileDialog" timestamp="1631797119926">
+    <state x="518" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1643289718234" />
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1641656257063">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="518" y="287" key="NewPhpFileDialog/0.0.1366.728@0.0.1366.728" timestamp="1631797119926" />
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup" timestamp="1636651407063">
+    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1641656257063" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1641651168378">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="339" y="162" width="672" height="677" key="run.anything.popup/0.0.1366.728@0.0.1366.728" timestamp="1636651407063" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1636291777774">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1636291777774" />
+    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1641651168378" />
   </component>
 </project>

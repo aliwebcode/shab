@@ -18,9 +18,8 @@
                                 <search-box></search-box>
                                 <br/>
                             </div>
-                            <div class="tab-content p-0 col-lg-8">
+                            <div class="tab-content p-0 col-12">
                                 <div class="tab-pane fade active show" id="tab1">
-
                                     <div
                                         class="card contact-form-white d-flex flex-column align-items-center element-form-left"
                                         style="padding:5%">
@@ -51,35 +50,6 @@
                                             </div>
                                             <div class="col-lg-5"></div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4">
-                                <div class="card">
-                                    <div class="card-body" style="text-align: center;">
-                                        <h5 class="card-title" style="text-align:center">برج الجوزاء</h5>
-                                        <hr/>
-                                        <p class="card-text" style="text-align:center">
-                                            برج الجوزاء هو ثالث برج من الأبراج الإثنى عشر من دائرة البروج أي قوس من
-                                            دائرة مسار الشمس. برج من الجهة الشمالية للسماء. تمر الشمس في برج الجوزاء من
-                                            21 مايو إلى 21 يونيو. تكون الشمس في هذا البرج عند أواخر الربيع.
-                                        </p>
-                                        <hr/>
-                                        <a href="#">حظك اليوم</a>
-                                    </div>
-                                </div>
-                                <br/>
-                                <div class="card">
-                                    <div class="card-body" style="text-align: center;">
-                                        <h5 class="card-title" style="text-align:center"> فرصتك للزواج 70%</h5>
-                                        <hr/>
-                                        <div class="progress">
-                                            <div class="progress-bar progress-bar-striped progress-bar-animated"
-                                                 role="progressbar" aria-valuenow="75" aria-valuemin="0"
-                                                 aria-valuemax="100" style="width: 75%"></div>
-                                        </div>
-                                        <hr/>
-                                        <a href="#" onclick="$('#SearchDivBtn').click();">أبحث الأن و لا تتردد</a>
                                     </div>
                                 </div>
                             </div>

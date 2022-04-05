@@ -34,7 +34,8 @@
                                              class="user-profile-image" v-if="userData.image">
                                         <img :src="'/assets/img/Icon/' + userData.avatar + '.jpg'"
                                              class="user-profile-image" v-if="userData.avatar">
-                                        <h6 class="my-2">{{ userData.name }}</h6>
+                                        <h6>{{ userData.name }}</h6>
+                                        <p class="hy-2">{{ userData.user_code }}</p>
                                         <hr/>
                                         <ul class="profile-options" v-if="auth_user_id != userData.id">
                                             <li>
@@ -62,6 +63,8 @@
                                     أرسل طلب رؤية شرعية
                                 </button>
                                 <button
+                                    @click="blockUser"
+                                    type="button"
                                     class="btn btn-danger btn-block py-3 mb-3"
                                     v-if="userData.id !=  auth_user_id">
                                     <i class="fa fa-ban"></i>
@@ -241,14 +244,14 @@
                                             <i class="fa fa-info-circle"></i>
                                             كلام
                                             {{ userData.name }}
-                                            عن نفسه
+                                            عن نفسه/ ـها
                                         </h6>
                                         <p class="text-right">{{ userData.userDescription }}</p>
                                         <h6 class="text-right section-heading">
                                             <i class="fa fa-info-circle"></i>
                                             كلام
                                             {{ userData.name }}
-                                            عن شريكه
+                                            عن شريكه/ ـها
                                         </h6>
                                         <p class="text-right">{{ userData.partnerDescription }}</p>
                                     </div>
@@ -518,6 +521,22 @@ export default {
                         })
                     }
                 })
+        },
+        blockUser: function () {
+            axios.post("/api/block-user", {
+                myId: this.auth_user_id,
+                userId: this.userData.id
+            })
+            .then((res) => {
+                if(res.data == 1) {
+                    Swal.fire({
+                        title: 'تهانينا!',
+                        text: 'تم حظر المستخدم بنجاح',
+                        icon: 'success',
+                        confirmButtonText: 'تم'
+                    })
+                }
+            })
         }
     }
 }

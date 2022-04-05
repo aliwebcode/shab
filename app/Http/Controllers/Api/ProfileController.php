@@ -10,6 +10,7 @@ use App\Notifications\ImageSendNotification;
 use App\Events\ImageSendEvent;
 use App\Profile;
 use App\RequestReceiver;
+use App\RequestSender;
 use App\SentImage;
 use App\User;
 use App\UserRequest;
@@ -102,12 +103,17 @@ class ProfileController extends Controller
     public function changeProfileStatus(Request $request)
     {
         $user = User::find($request->id);
-        if ($user->profileStatus == 1)
+        $status = null;
+        if ($user->profileStatus == 1) {
             $user->profileStatus = 0;
-        else
+            $status = 0;
+        }
+        else {
             $user->profileStatus = 1;
+            $status = 1;
+        }
         $user->save();
-        return response()->json(1);
+        return response()->json($status,200);
     }
 
     public function complete_profile_action(Request $request)
@@ -299,9 +305,10 @@ class ProfileController extends Controller
     }
 
     public function get_active_requests($id) {
+//        $requests = UserRequest::where('to_id',$id)->get();
         $requests = UserRequest::where([
             ['to_id',$id],
-            ['status',1]
+            ['status','!=', 0]
         ])->get();
         $data = [];
         foreach ($requests as $request) {
@@ -338,6 +345,15 @@ class ProfileController extends Controller
             $data[] = ["user" => $user, "block" => $row];
         }
         return response()->json($data);
+    }
+
+    public function block_user(Request $request) {
+        $data = [
+            "user_id" => $request->myId,
+            "blocked" => $request->userId
+        ];
+        $b = Block::updateOrCreate($data);
+        return response()->json(1,200);
     }
 
     public function cancel_block(Request $request) {
@@ -382,14 +398,6 @@ class ProfileController extends Controller
 
     public function get_notifications($id) {
         $user = User::find($id);
-//        $data = [];
-//        $im = SentImage::where('to_id',$id)->get();
-//        foreach ($im as $i) {
-//            $user = User::find($i->from_id);
-//            $data[] = ["user" => $user, "not" => $i];
-//        }
-//        $req = UserRequest::where('to_id',$id)->get();
-//        $data = $req->merge($im)
         return $user->notifications;
     }
 
@@ -406,7 +414,7 @@ class ProfileController extends Controller
     }
 
     public function get_mail() {
-        $mails = Mail::all();
+        $mails = Mail::paginate(5);
         return response()->json($mails);
     }
 

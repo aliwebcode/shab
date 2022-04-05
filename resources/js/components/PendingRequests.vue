@@ -16,9 +16,12 @@
                                     :activated="activated"
                                     :complete="complete"></account-status>
                                 <search-box></search-box>
+                                <div class="loading-area" v-if="!loaded">
+                                    <i class="fas fa-spinner fa-pulse fa-2x"></i>
+                                </div>
                                 <br/>
                             </div>
-                            <div class="tab-content p-0 col-lg-12">
+                            <div class="tab-content p-0 col-lg-12" v-if="loaded">
                                 <div class="tab-pane fade active show" id="tab2">
                                     <table class="table table-bordered" style="text-align:center">
                                         <thead>
@@ -30,6 +33,9 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                        <tr v-if="requests.length == 0">
+                                            <td colspan="4" class="text-center">لا يوجد طلبات.</td>
+                                        </tr>
                                         <tr v-for="(request,index) in requests">
                                             <th>
                                                 <router-link :to="'/user/'+users[index].id">{{
@@ -91,23 +97,29 @@
                                 يرجى اختيار مواعيد و الشخص المستضيف
                             </p>
                         </div>
+                        <div class="alert alert-info text-right">
+                            <p>
+                                <i class="fa fa-info-circle"></i>
+                                يرجى إضافة مواعيد عديدة بحيث تناسب الطرف الآخر (حد أدنى 3 مواعيد)
+                            </p>
+                        </div>
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-lg-6">
-                                    <h6 style="text-align:right" class="mb-3">أختيار التاريخ المناسب</h6>
+                                    <h6 style="text-align:right" class="mb-3">اختيار التاريخ المناسب</h6>
 
                                     <div v-for="(date, index) in row.dates">
                                         <input type="date" v-model="date.value" :key="index" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-lg-6">
-                                    <h6 style="text-align:right" class="mb-3">أختيار الوقت المناسب</h6>
+                                    <h6 style="text-align:right" class="mb-3">اختيار الوقت المناسب</h6>
 <!--                                    <div class="row">-->
                                         <div v-for="(time, index) in row.times" class="row">
                                             <div class="col-6 text-right">
-                                                <select class="form-control" v-model="time.hour" :key="index">
+                                                <select class="form-control" style="direction: ltr" v-model="time.hour" :key="index">
                                                     <option disabled selected value="">الساعة</option>
-                                                    <option value="00">12 AM</option>
+                                                    <option value="00">00 AM</option>
                                                     <option value="01">1 AM</option>
                                                     <option value="02">2 AM</option>
                                                     <option value="03">3 AM</option>
@@ -134,7 +146,7 @@
                                                 </select>
                                             </div>
                                             <div class="col-6 text-right">
-                                                <select class="form-control" v-model="time.minute" :key="index">
+                                                <select class="form-control" style="direction: ltr" v-model="time.minute" :key="index">
                                                     <option disabled selected value="">الدقائق</option>
                                                     <option value="00">00</option>
                                                     <option value="05">05</option>
@@ -222,7 +234,8 @@ export default {
                 times: [],
                 location: "",
                 host: "",
-            }
+            },
+            loaded: false
         }
     },
     mounted() {
@@ -241,6 +254,7 @@ export default {
                     this.requests.push(res.data[i].request)
                     this.users.push(res.data[i].user)
                 }
+                this.loaded = true
                 // console.log(this.requests)
                 // console.log(this.users)
             })

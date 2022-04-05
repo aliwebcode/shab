@@ -33,13 +33,13 @@
                                         <hr/>
                                         <div class="row" style="width: 100%;">
                                             <div class="col-lg-6">
-                                                <p class="text-center d-block">وصف عن نفسك</p>
+                                                <h6 class="text-center">وصف عن نفسك</h6>
                                                 <textarea v-model="userDescription" class="input-small"
                                                           :placeholder="user.userDescription">
                                                 </textarea>
                                             </div>
                                             <div class="col-lg-6">
-                                                <p class="text-center d-block">وصف عن الشريك</p>
+                                                <h6 class="text-center">وصف عن الشريك</h6>
                                                 <textarea v-model="partnerDescription" class="input-small"
                                                           :placeholder="user.partnerDescription">
                                                 </textarea>
